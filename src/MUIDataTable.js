@@ -360,7 +360,7 @@ class MUIDataTable extends React.Component {
 
       const columnVal = columnValue === null ? "" : columnValue.toString();
 
-      if (searchText && !this.options.serverSide) {
+      if (searchText) {
         let searchNeedle = searchText.toString();
         let searchStack = columnVal.toString();
 
@@ -375,7 +375,7 @@ class MUIDataTable extends React.Component {
       }
     }
 
-    if (isFiltered || (searchText && !isSearchFound)) return null;
+    if (isFiltered || (!this.options.serverSide && searchText && !isSearchFound)) return null;
     else return displayRow;
   }
 
